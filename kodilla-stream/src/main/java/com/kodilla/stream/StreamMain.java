@@ -1,11 +1,28 @@
 package com.kodilla.stream;
 
 import com.kodilla.stream.beautifier.PoemBeautifier;
+import com.kodilla.stream.forumuser.Forum;
+
+import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class StreamMain {
 
     public static void main(String[] args) {
+        // 7.3
+        (new Forum()).getUserList().stream()
+                .filter(user -> user.getSex() == 'M')
+                .filter(user -> (LocalDate.now().getYear() - user.getDateOfBirth().getYear()) >= 20)
+                . filter(user -> user.getPosts() > 0)
+                .collect(Collectors.toMap(user -> user.getUserID(), user -> user))
+                .entrySet()
+                .stream()
+                .map(user -> "ID " + user.getKey() + ": " + user.getValue())
+                .forEach(System.out::println);
+
+        // 7.1
+        System.out.println("\n\n\n");
         PoemBeautifier poemBeautifier = new PoemBeautifier();
         String text;
         text = "Some Text To Beautify.";
