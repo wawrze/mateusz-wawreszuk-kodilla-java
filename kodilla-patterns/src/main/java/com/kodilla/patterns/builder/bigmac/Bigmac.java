@@ -63,7 +63,7 @@ public class Bigmac {
 
     }
 
-    public Bigmac(boolean bun, int burgers, String sauce, List<String> ingredients) {
+    private Bigmac(boolean bun, int burgers, String sauce, List<String> ingredients) {
         this.isBunWithSesame = bun;
         this.burgers = burgers;
         this.sauce = sauce;
