@@ -4,6 +4,7 @@
 /kodilla-testing/build/*
 /kodilla-testing/out/*
 kodilla-patterns/out/*
+kodilla-jdbc/out/*
 
 ### STS ###
 .apt_generated
