@@ -34,8 +34,9 @@ public class Invoice {
 
     @OneToMany(
             targetEntity = InvoiceEntry.class,
+            mappedBy = "invoice",
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
+            fetch = FetchType.LAZY
     )
     public List<InvoiceEntry> getEntries() {
         return entries;

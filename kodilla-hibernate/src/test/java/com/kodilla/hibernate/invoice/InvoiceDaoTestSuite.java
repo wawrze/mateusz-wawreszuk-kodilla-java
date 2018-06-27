@@ -32,9 +32,9 @@ public class InvoiceDaoTestSuite {
 
         Invoice invoice = new Invoice("1/06/2018");
 
-        InvoiceEntry entry1 = new InvoiceEntry(product1, new BigDecimal(100), 4);
-        InvoiceEntry entry2 = new InvoiceEntry(product2, new BigDecimal(200), 5);
-        InvoiceEntry entry3 = new InvoiceEntry(product3, new BigDecimal(300), 6);
+        InvoiceEntry entry1 = new InvoiceEntry(invoice, product1, new BigDecimal(100), 4);
+        InvoiceEntry entry2 = new InvoiceEntry(invoice, product2, new BigDecimal(200), 5);
+        InvoiceEntry entry3 = new InvoiceEntry(invoice, product3, new BigDecimal(300), 6);
 
         invoice.getEntries().add(entry1);
         invoice.getEntries().add(entry2);
@@ -58,13 +58,16 @@ public class InvoiceDaoTestSuite {
         Assert.assertNotEquals(0, product2Id);
         Assert.assertNotEquals(0, product3Id);
         //CleanUp
-        invoiceDao.delete(invoiceId);
-        productDao.delete(product1);
-        productDao.delete(product2);
-        productDao.delete(product3);
-        invoiceEntryDao.delete(entry1);
-        invoiceEntryDao.delete(entry2);
-        invoiceEntryDao.delete(entry3);
+        try {
+            invoiceDao.delete(invoiceId);
+            productDao.delete(product1);
+            productDao.delete(product2);
+            productDao.delete(product3);
+            invoiceEntryDao.delete(entry1);
+            invoiceEntryDao.delete(entry2);
+            invoiceEntryDao.delete(entry3);
+        }
+        catch (Exception e) {}
     }
 
 }

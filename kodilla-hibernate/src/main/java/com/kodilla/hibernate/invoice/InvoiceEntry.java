@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 public class InvoiceEntry {
 
     private int id;
+    private Invoice invoice;
     private Product product;
     private BigDecimal price;
     private int quantity;
@@ -16,7 +17,8 @@ public class InvoiceEntry {
 
     private InvoiceEntry() {}
 
-    public InvoiceEntry(Product product, BigDecimal price, int quantity) {
+    public InvoiceEntry(Invoice invoice, Product product, BigDecimal price, int quantity) {
+        this.invoice = invoice;
         this.product = product;
         this.price = price;
         this.quantity = quantity;
@@ -53,6 +55,16 @@ public class InvoiceEntry {
     @Column(name = "VALUE")
     public BigDecimal getValue() {
         return value;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "INVOICE_ID")
+    public Invoice getInvoice() {
+        return invoice;
+    }
+
+    private void setInvoice(Invoice invoice) {
+        this.invoice = invoice;
     }
 
     private void setId(int id) {
