@@ -1,4 +1,4 @@
-package com.kodilla.patterns2.facade.dao;
+package com.kodilla.patterns2.facade.aop;
 
 import com.kodilla.patterns2.facade.api.OrderDto;
 import org.aspectj.lang.annotation.Aspect;
