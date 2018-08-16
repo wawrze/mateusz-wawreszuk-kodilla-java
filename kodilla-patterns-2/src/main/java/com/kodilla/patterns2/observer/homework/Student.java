@@ -35,4 +35,16 @@ public class Student implements Observable {
         notifyObserver();
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public Deque<Homework> getHomeworks() {
+        return homeworks;
+    }
+
+    public Mentor getMentor() {
+        return mentor;
+    }
+
 }

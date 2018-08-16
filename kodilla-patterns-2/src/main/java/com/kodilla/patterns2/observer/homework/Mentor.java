@@ -16,8 +16,8 @@ public class Mentor implements Observer {
     @Override
     public void update(Homework homework) {
         homeworksToCheck.push(homework);
-        System.out.println("New homework in queue (number: " + homework.getNumber() + "student: "
-                + homework.getStudent() + ".");
+        System.out.println("New homework in queue (number: " + homework.getNumber() + ", student: "
+                + homework.getStudent().getName() + ".");
     }
 
     public String getName() {
