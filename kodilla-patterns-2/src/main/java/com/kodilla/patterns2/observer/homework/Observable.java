@@ -6,8 +6,8 @@ public interface Observable {
 
     void addObserver(Observer observer);
 
-    void notifyObserver();
+    void notifyObservers();
 
-    void changeObserver(Observer observer);
+    void removeObserver(Observer observer);
 
 }

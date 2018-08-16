@@ -1,38 +1,41 @@
 package com.kodilla.patterns2.observer.homework;
 
 import java.util.ArrayDeque;
+import java.util.ArrayList;
 import java.util.Deque;
+import java.util.List;
 
 public class Student implements Observable {
 
     private final String name;
     private final Deque<Homework> homeworks;
-    private Mentor mentor;
+    private List<Observer> observers;
 
     public Student(String name, Mentor mentor) {
         homeworks = new ArrayDeque<>();
         this.name = name;
-        this.mentor = mentor;
+        this.observers = new ArrayList<>();
+        this.observers.add(mentor);
     }
 
     @Override
     public void addObserver(Observer observer) {
-        mentor = (Mentor) observer;
+        observers.add(observer);
     }
 
     @Override
-    public void changeObserver(Observer observer) {
-        mentor = (Mentor) observer;
+    public void removeObserver(Observer observer) {
+        observers.remove(observer);
     }
 
     @Override
-    public void notifyObserver() {
-        mentor.update(homeworks.peekFirst());
+    public void notifyObservers() {
+        observers.forEach(o -> o.update(homeworks.peekLast()));
     }
 
     public void addHomework(Homework homework) {
         homeworks.push(homework);
-        notifyObserver();
+        notifyObservers();
     }
 
     public String getName() {
@@ -43,8 +46,8 @@ public class Student implements Observable {
         return homeworks;
     }
 
-    public Mentor getMentor() {
-        return mentor;
+    public List<Observer> getObservers() {
+        return observers;
     }
 
 }
